@@ -16,6 +16,7 @@ prompt.start();
 
 console.log('Please enter your name: ');
 prompt.get(
+// Acquire all requested inputs in one get statement
 [{
     name: 'name',
     required: true
@@ -32,11 +33,14 @@ prompt.get(
     name: 'csc241grade',
     required: true
 }], 
+// Run GPA calculations and display result
 function (err, result){
-    console.log('Given Input: ' + result.name + ' ' + toGPA(result.csc141grade) + ' ' + result.csc142grade + ' ' + result.csc240grade + ' ' + result.csc241grade);
+    console.log('Given Input: ' + result.name + ' ' + result.csc141grade + ' ' + result.csc142grade + ' ' + result.csc240grade + ' ' + result.csc241grade);
     console.log('Estimated GPA: ' + (toGPA(result.csc141grade) + ' ' + toGPA(result.csc142grade) + ' ' + toGPA(result.csc240grade) + ' ' + toGPA(result.csc241grade));
 }
 
+// Accepts a string letterGrade and outputs an integer corresponding to the
+// GPA (Grade Point Average) of the "letter" (letterGrade)
 function toGPA(letterGrade){
     switch(letterGrade){
         case 'A':
@@ -60,5 +64,3 @@ function toGPA(letterGrade){
             break;
     }
 }
-
-
