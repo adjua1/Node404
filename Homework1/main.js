@@ -9,6 +9,7 @@
 
 var prompt = require('prompt');
 var gpa = 0;
+var studentList = [];
  
 // Start the prompt
 
@@ -21,22 +22,39 @@ prompt.get(
     name: 'name',
     required: true
 }, {
-    name: 'csc141grade',
+    name: 'csc141Grade',
     required: true
 }, {
-    name: 'csc142grade',
+    name: 'csc142Grade',
     required: true
 }, {
-    name: 'csc240grade',
+    name: 'csc240Grade',
     required: true
 }, {
-    name: 'csc241grade',
+    name: 'csc241Grade',
     required: true
 }], 
 // Run GPA calculations and display result
 function (err, result){
-    console.log('Given Input: ' + result.name + ' ' + result.csc141grade + ' ' + result.csc142grade + ' ' + result.csc240grade + ' ' + result.csc241grade);
-    console.log('Estimated GPA: ' + (toGPA(result.csc141grade) + ' ' + toGPA(result.csc142grade) + ' ' + toGPA(result.csc240grade) + ' ' + toGPA(result.csc241grade));
+    studentList.push(new Student(result.name, result.csc141Grade, result.csc142Grade, result.csc240Grade, result.csc241Grade));
+    console.log('Given Input: ' + result.name + ' ' + result.csc141Grade + ' ' + result.csc142Grade + ' ' + result.csc240Grade + ' ' + result.csc241Grade);
+    console.log('Estimated GPA: ' + toGPA(result.csc141Grade) + ' ' + toGPA(result.csc142Grade) + ' ' + toGPA(result.csc240Grade) + ' ' + toGPA(result.csc241Grade));
+    console.log('Estimated GPA Function: ' + (studentList[0].getPartialGPA()));
+}
+)
+
+function Student(name, csc141Grade, csc142Grade, csc240Grade, csc241Grade){
+    var numGrades = 4;
+    this.name = name;
+    this.csc141Grade = csc141Grade;
+    this.csc142Grade = csc142Grade;
+    this.csc240Grade = csc240Grade;
+    this.csc241Grade = csc241Grade;
+    
+    this.getPartialGPA = function (){
+        return ((toGPA(this.csc141Grade) + toGPA(this.csc142Grade) + toGPA(this.csc240Grade) + toGPA(this.csc241Grade)) / numGrades);
+    }
+    
 }
 
 // Accepts a string letterGrade and outputs an integer corresponding to the
