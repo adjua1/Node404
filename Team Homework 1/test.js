@@ -1,6 +1,6 @@
 "use strict";
 
-var test = require('./test.js');
+var test = require('./utilities.js');
 
 //console.log(test.getGPA('A', 'A', 'A', 'A'));
 
