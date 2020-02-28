@@ -1,9 +1,5 @@
-var prompt = require('prompt');
-const utilities = require('./utilities');
-prompt.start();
+"use strict";
 
-prompt.get(['name', 'CSC141','CSC142','CSC240','CSC241'], (err, result) => {
+var test = require('./test.js');
 
-    console.log(result.name+" your GPA is " + utilities.getGPA(result.CSC141,result.CSC142,result.CSC241,result.CSC240));
-
-    });
+console.log(test.getGPA('A', 'A', 'A', 'A'));
