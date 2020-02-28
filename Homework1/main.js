@@ -11,40 +11,85 @@ var prompt = require('prompt');
 var gpa = 0;
 var studentList = [];
  
+// JSON schema for prompt
+
+var schema = {
+    properties:{
+        name:{
+            // TODO pattern and message
+            description: 'Student name: ',
+            required: true,
+            type: 'string'
+        },
+        csc141Grade:{
+            // TODO description !! description: ,
+            pattern: /[ABCDF]/,
+            message: 'A letter grade must be one of these letters: A, B, C, D, or F. ',
+            required: true
+        },
+        csc142Grade:{
+            pattern: /[ABCDF]/,
+            message: 'A letter grade must be one of these letters: A, B, C, D, or F. ',
+            required: true
+        },
+        csc240Grade:{
+            pattern: /[ABCDF]/,
+            message: 'A letter grade must be one of these letters: A, B, C, D, or F. ',
+            required: true
+        },
+        csc241Grade:{
+            pattern: /[ABCDF]/,
+            message: 'A letter grade must be one of these letters: A, B, C, D, or F. ',
+            required: true
+        },
+        goAgain:{
+            pattern: /[YN]/,
+            message: 'Response should be Y or N. ',
+            required: true
+        }
+    }
+} 
+ 
 // Start the prompt
 
 prompt.start();
 
 console.log('Please enter your name: ');
+// User input loop 
 prompt.get(
 // Acquire all requested inputs in one get statement
-[{
-    name: 'name',
-    required: true
-}, {
-    name: 'csc141Grade',
-    required: true
-}, {
-    name: 'csc142Grade',
-    required: true
-}, {
-    name: 'csc240Grade',
-    required: true
-}, {
-    name: 'csc241Grade',
-    required: true
-}], 
-// Run GPA calculations and display result
-function (err, result){
-    studentList.push(new Student(result.name, result.csc141Grade, result.csc142Grade, result.csc240Grade, result.csc241Grade));
-    console.log('Given Input: ' + result.name + ' ' + result.csc141Grade + ' ' + result.csc142Grade + ' ' + result.csc240Grade + ' ' + result.csc241Grade);
-    console.log('Estimated GPA: ' + toGPA(result.csc141Grade) + ' ' + toGPA(result.csc142Grade) + ' ' + toGPA(result.csc240Grade) + ' ' + toGPA(result.csc241Grade));
-    console.log('Estimated GPA Function: ' + (studentList[0].getPartialGPA()));
-}
+    [{
+        name: 'name',
+        required: true
+    }, {
+        name: 'csc141Grade',
+        required: true
+    }, {
+        name: 'csc142Grade',
+        required: true
+    }, {
+        name: 'csc240Grade',
+        required: true
+    }, {
+        name: 'csc241Grade',
+        required: true
+    }, {
+        console.log('Would you like to enter another student\'s information? (Y/N) ');
+        name: 'response',
+        required: true
+    }], 
+    // Run GPA calculations and display result
+    function (err, result){
+        studentList.push(new Student(result.name, result.csc141Grade, result.csc142Grade, result.csc240Grade, result.csc241Grade));
+        console.log('Given Input: ' + result.name + ' ' + result.csc141Grade + ' ' + result.csc142Grade + ' ' + result.csc240Grade + ' ' + result.csc241Grade);
+        console.log('Estimated GPA: ' + toGPA(result.csc141Grade) + ' ' + toGPA(result.csc142Grade) + ' ' + toGPA(result.csc240Grade) + ' ' + toGPA(result.csc241Grade));
+        console.log('Estimated GPA Function: ' + (studentList[0].getPartialGPA()));
+    }
 )
 
 function Student(name, csc141Grade, csc142Grade, csc240Grade, csc241Grade){
     var numGrades = 4;
+    
     this.name = name;
     this.csc141Grade = csc141Grade;
     this.csc142Grade = csc142Grade;
