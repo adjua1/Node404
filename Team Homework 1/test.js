@@ -4,7 +4,7 @@ var test = require('./utilities.js');
 
 //console.log(test.getGPA('A', 'A', 'A', 'A'));
 
-const testCases = [['A', 'A', 'A', 'A', 4], ['B', 'B', 'B', 'B', 3], ['C', 'C', 'C', 'C', 2], ['D', 'D', 'D', 'D', 1], ['F', 'F', 'F', 'F', 0], ['A', 'A', 'A', 'Q', "The value given Q is not a valid input"]];
+const testCases = [['A', 'A', 'A', 'A', 4], ['B', 'B', 'B', 'B', 3], ['C', 'C', 'C', 'C', 2], ['D', 'D', 'D', 'D', 1], ['F', 'F', 'F', 'F', 0], ['A', 'A', 'A', 'Q', -1], ['A', 'A', 'Q', 'Q', -1]];
 const results = [];
 
 var i;
