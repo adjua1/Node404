@@ -59,19 +59,19 @@
     grade = grade +0;
     if((w!='F')&&(w!='D')&&(w!='C')&&(w!='B')&&(w!='A'))
     {console.error("The value given " + w + " is not a valid input");
-    return process.exit();
+    return -1.0;
   }
     if((x!='F')&&(x!='D')&&(x!='C')&&(x!='B')&&(x!='A'))
     {console.error("The value given " + x + " is not a valid input");
-    return process.exit();
+    return -1.0;
 }
     if((z!='F')&&(z!='D')&&(z!='C')&&(z!='B')&&(z!='A'))
     {console.error("The value given " + z + " is not a valid input");
-    return process.exit();   
+    return -1.0;   
 }
     if((y!='F')&&(y!='D')&&(y!='C')&&(y!='B')&&(y!='A'))
     {console.error("The value given " + y + " is not a valid input");
-    return process.exit();   
+    return -1.0;   
 }
     return  Math.round((grade/ 4) * 10)/10;
     
