@@ -32,4 +32,11 @@ for(j = 0; j < results.length; j++)
 
 var errorRate = (errors/(results.length))*100;
 
-console.log("We have an error rate of "+ errorRate + "%. The error cases are as follows:\n" + errorCases);
+if(errorRate != 0)
+{
+  console.log("We have an error rate of "+ errorRate + "%. The error cases are as follows:\n" + errorCases);
+}
+else
+{
+  console.log("We have an error rate of "+ errorRate + "%.");
+}
