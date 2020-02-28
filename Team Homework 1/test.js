@@ -4,7 +4,9 @@ var test = require('./utilities.js');
 
 //console.log(test.getGPA('A', 'A', 'A', 'A'));
 
-const testCases = [['A', 'A', 'A', 'A', 4], ['B', 'B', 'B', 'B', 3], ['C', 'C', 'C', 'C', 2], ['D', 'D', 'D', 'D', 1], ['F', 'F', 'F', 'F', 0], ['A', 'A', 'A', 'Q', -1], ['A', 'A', 'Q', 'Q', -1]];
+const testCases = [['A', 'A', 'A', 'A', 4], ['B', 'B', 'B', 'B', 3], ['C', 'C', 'C', 'C', 2], ['D', 'D', 'D', 'D', 1], ['F', 'F', 'F', 'F', 0], ['A', 'A', 'A', 'Q', -1], ['A', 'A', 'Q', 'Q', -1],
+['A', 'B', 'C', 'D', (10/4)],['F', 'D', 'C', 'B', (6/4)]];
+
 const results = [];
 
 var i;
@@ -14,7 +16,7 @@ for(i = 0; i < testCases.length; i++)
     results.push([testCases[i][4], (test.getGPA(testCases[i][0],testCases[i][1],testCases[i][2],testCases[i][3]))]);
 }
 
-console.log(results);
+//console.log(results);
 
 var j;
 var errors = 0;
