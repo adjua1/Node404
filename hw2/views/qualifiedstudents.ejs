@@ -1,23 +1,17 @@
-
-
-
- 
 <div class="container">
-  
   <div>
   <span>
-    <h1>Our Courses</h1>
+    <h1 style="font-weight: bold; padding-bottom: 8px; padding-left: 25px">Qualified Students</h1>
     <span class="col-6 center">
-     <img src="images/fruit.jpg" alt=""  >
+     <img src="images/people.jpg" alt="People">
    </span>
   </div>
   <div class="col-6 center">
     <span>
   <% allCourses.forEach(course => {%> 
-    <h5> <%= course.name %> </h5>
+    <h4> <%= course.name %> </h4>
     <span>$ <%= course.price %> </span>
   <% }) %>
   </span>
   </div>
-  
 </div>
