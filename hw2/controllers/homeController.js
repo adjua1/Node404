@@ -17,7 +17,7 @@ var courses = [
 ];
 console.log('in homeController pass 1');
 router.showCourses = (req, res) => {
-    res.render("courses", {
+    res.render("qualifiedstudents", {
         allCourses: courses, title: "Course List"
     });
 };
@@ -29,7 +29,7 @@ router.addCourses = (req, res) => {
     var newCoursePrice = req.body.price;
     let allCourses = courses;
     allCourses.push({name: newcourseName, price: newCoursePrice});
-    res.render("courses", {
+    res.render("qualifiedstudents", {
         allCourses: courses
     });
 };
@@ -37,7 +37,7 @@ router.addCourses = (req, res) => {
 console.log('in homeController pass 3');
 router.getNewCourse = (req, res) => {
     console.log("in homeController getNewCourse");
-    res.render("newcourse", {title: "New Course"});
+    res.render("gradeinput", {title: "New Course"});
 };
 module.exports = router;
 
