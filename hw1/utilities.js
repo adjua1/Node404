@@ -1,5 +1,5 @@
-  exports.getGPA = (x,y,z,w) =>
-  { 
+exports.getGPA = (x,y,z,w) =>
+{ 
     var grade = 0;
     if(x=='A')                  
     grade = grade +4;
@@ -72,4 +72,4 @@
     }
     return  Math.round((grade/ 4) * 10)/10;
     
-  ;};
+;};
