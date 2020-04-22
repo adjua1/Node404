@@ -10,12 +10,12 @@ var GPACalc = require('../utilities.js');
 
 var courses = [
     {
-        name: "Node.js Programming",
+        name: "John Doe",
         grades: ["300", "400", "500", "600"],
         gpa: 4.0
     },
     {
-        name: "Big Data",
+        name: "Jane Roe",
         grades: ["100", "200", "300", "400"],
         gpa: 3.9
     }
