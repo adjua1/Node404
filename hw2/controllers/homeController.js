@@ -52,7 +52,7 @@ var courses = [
 console.log('in homeController pass 1');
 router.showCourses = (req, res) => {
     res.render("qualifiedstudents", {
-        allCourses: courses, title: "Course List"
+        allCourses: studentArr, title: "Course List"
     });
 };
 console.log('in homeController pass 2');
@@ -67,7 +67,7 @@ router.addCourses = (req, res) => {
     let allCourses = courses;
     var SGPA = GPACalc.getGPA(grade1, grade2, grade3, grade4)
 
-    if(SGPA > 3)
+    if(SGPA > 2.5)
     {
         col.insertOne({name: studentName, grades: [grade1, grade2, grade3, grade4], gpa: SGPA}, function(err, r) {
             test.equal(null, err);
@@ -80,9 +80,7 @@ router.addCourses = (req, res) => {
         allCourses.push({name: studentName, grades: [grade1, grade2, grade3, grade4], gpa: SGPA});
     }
     
-    res.render("qualifiedstudents", {
-        allCourses: courses
-    });
+    res.render('thanks', {title: "CSC Courses"});
 };
 
 console.log('in homeController pass 3');
