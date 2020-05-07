@@ -42,7 +42,9 @@ app.post ('/qualifiedstudents/submit', homeController.addCourses);
 app.post('/gradeinput', homeController.addCourses, homeController.showCourses);
 console.log('pass 9');
 app.get('/gradeinput', homeController.getNewCourse);
-//app.createServer( router.handle )
+
+// Testing alternative
+app.get('/test', homeController.showTest);
 
 app.listen( app.get("port"),  () => {
   console.log(`Server running on port ${port}`);

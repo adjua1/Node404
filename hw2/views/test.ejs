@@ -1,0 +1,46 @@
+
+<table border-spacing="30px" padding="10px" border="2px solid black">
+<tr>
+    <td>  </td>
+    <td> Information Entered </td>
+    <td> Information In Database </td>
+</tr>
+
+<tr>
+    <td> Name </td>
+    <td> <%= name %> </td>
+    <td> <% array.forEach(course => { %><%= course.name %><%}) %> </td>
+</tr>
+
+<tr>
+    <td> GPA </td>
+    <td> <%= gpa %> </td>
+    <td> <% array.forEach(course => { %><%= course.gpa %><%}) %> </td>
+</tr>
+
+<tr>
+    <td> Grade for CSC141 </td>
+    <td> <%= g1 %> </td>
+</tr>
+
+<tr>
+    <td> Grade for CSC142 </td>
+    <td> <%= g2 %> </td>
+</tr>
+
+<tr>
+    <td> Grade for CSC240 </td>
+    <td> <%= g3 %> </td>
+</tr>
+
+<tr>
+    <td> Grade for CSC241 </td>
+    <td> <%= g4 %> </td>
+</tr>
+
+<tr>
+    <td> GPA Cutoff </td>
+    <td> <%= cutoff %> </td>
+</tr>
+
+</table>

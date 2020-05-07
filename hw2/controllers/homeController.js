@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', function(req, res, next) {
     res.render('index', { title: "Courses"})
 });
-
+var GPA_CUTOFF = 2.5;
 var GPACalc = require('../utilities.js');
 
 const MongoDB = require("mongodb").MongoClient,
@@ -37,18 +37,7 @@ MongoDB.connect(dbURL, {useUnifiedTopology: true,
         });
     console.log(`All students: ${studentArr}`);
 });
-var courses = [
-    {
-        name: "John Doe",
-        grades: ["300", "400", "500", "600"],
-        gpa: 4.0
-    },
-    {
-        name: "Jane Roe",
-        grades: ["100", "200", "300", "400"],
-        gpa: 3.9
-    }
-];
+
 console.log('in homeController pass 1');
 router.showCourses = (req, res) => {
     res.render("qualifiedstudents", {
@@ -58,16 +47,20 @@ router.showCourses = (req, res) => {
 console.log('in homeController pass 2');
 router.addCourses = (req, res) => {
     console.log("in homeController addCourses");
-    var studentName = req.body.name;
+    
+    // ! WIPING DATABASE !
+    col.remove({});
+    
+    let studentName = req.body.name;
     console.log("name " + studentName);
-    var grade1 = req.body.grade1;
-    var grade2 = req.body.grade2;
-    var grade3 = req.body.grade3;
-    var grade4 = req.body.grade4;
-    let allCourses = courses;
-    var SGPA = GPACalc.getGPA(grade1, grade2, grade3, grade4)
+    let grade1 = req.body.grade1;
+    let grade2 = req.body.grade2;
+    let grade3 = req.body.grade3;
+    let grade4 = req.body.grade4;
+    let allCourses = [];
+    var SGPA = GPACalc.getGPA(grade1, grade2, grade3, grade4);
 
-    if(SGPA > 2.5)
+    if(SGPA > GPA_CUTOFF)
     {
         col.insertOne({name: studentName, grades: [grade1, grade2, grade3, grade4], gpa: SGPA}, function(err, r) {
             test.equal(null, err);
@@ -80,7 +73,18 @@ router.addCourses = (req, res) => {
         allCourses.push({name: studentName, grades: [grade1, grade2, grade3, grade4], gpa: SGPA});
     }
     
-    res.render('thanks', {title: "CSC Courses"});
+    // ! TESTING REDIRECTION !
+    //res.render('thanks', {title: "CSC Courses"});
+    res.render("test", {
+        array: allCourses,
+        name: studentName,
+        g1: grade1 ,
+        g2: grade2 ,
+        g3: grade3 ,
+        g4: grade4 ,
+        gpa: SGPA ,
+        cutoff: GPA_CUTOFF, title: "Test"
+    });
 };
 
 console.log('in homeController pass 3');
@@ -88,5 +92,14 @@ router.getNewCourse = (req, res) => {
     console.log("in homeController getNewCourse");
     res.render("gradeinput", {title: "New Course"});
 };
+
+// Testing Code
+router.showTest = (req, res) => {
+
+    res.render("test", {title: "Test"});
+};
+
+
+
 module.exports = router;
 
