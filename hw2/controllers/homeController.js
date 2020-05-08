@@ -60,7 +60,7 @@ router.addCourses = (req, res) => {
     let allCourses = [];
     var SGPA = GPACalc.getGPA(grade1, grade2, grade3, grade4);
 
-    if(SGPA > GPA_CUTOFF)
+    if(SGPA >= GPA_CUTOFF)
     {
         col.insertOne({name: studentName, grades: [grade1, grade2, grade3, grade4], gpa: SGPA}, function(err, r) {
             test.equal(null, err);
